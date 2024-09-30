@@ -6,8 +6,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @EnableDiscoveryClient
 @SpringBootApplication
-public class CharApiApplication {
+public class ChatApiApplication {
   public static void main(String[] args) {
-    SpringApplication.run(CharApiApplication.class, args);
+    SpringApplication.run(ChatApiApplication.class, args);
   }
 }
