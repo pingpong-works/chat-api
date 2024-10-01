@@ -4,7 +4,7 @@ plugins {
 	id 'java'
 }
 
-group = 'com.example'
+group = 'com.chat'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
@@ -57,6 +57,9 @@ dependencies {
 
 	// Mini.io
 	implementation 'io.minio:minio:8.5.10'
+
+	// Postgresql
+	runtimeOnly 'org.postgresql:postgresql'
 }
 
 dependencyManagement {
