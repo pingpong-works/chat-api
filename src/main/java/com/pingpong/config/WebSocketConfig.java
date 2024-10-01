@@ -1,4 +1,4 @@
-package com.chat.config;
+package com.pingpong.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
