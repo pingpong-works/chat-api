@@ -11,8 +11,9 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "chat_user")
 @Entity
-public class User {
+public class ChatUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
