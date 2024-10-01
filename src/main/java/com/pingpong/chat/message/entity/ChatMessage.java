@@ -1,7 +1,6 @@
 package com.pingpong.chat.message.entity;
 
-import com.pingpong.user.dto.UserDto;
-import com.pingpong.user.entity.UserEntity;
+import com.pingpong.user.entity.ChatUser;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -16,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class ChatMessageEntity {
+public class ChatMessage {
 
     @Id
     private String id;
@@ -31,7 +30,7 @@ public class ChatMessageEntity {
             joinColumns = @JoinColumn(name = "message_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private List<UserEntity> recipients;
+    private List<ChatUser> recipients;
 
     private String content;
     private String announcement;
