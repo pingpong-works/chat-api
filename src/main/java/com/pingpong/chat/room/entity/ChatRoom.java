@@ -1,10 +1,7 @@
 package com.pingpong.chat.room.entity;
 
-import com.pingpong.user.entity.UserEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.pingpong.user.entity.ChatUser;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -14,11 +11,12 @@ import java.util.Map;
 
 @Builder
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "chat_list")
 @Entity
-public class ChatRoomEntity {
+public class ChatRoom {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +43,7 @@ public class ChatRoomEntity {
             joinColumns = @JoinColumn(name = "chat_room_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    private List<UserEntity> participants;
+    private List<ChatUser> participants;
 
     /**
      * 마지막 메시지 내용 (미리보기용)
@@ -85,14 +83,14 @@ public class ChatRoomEntity {
     /**
      * 참가자 제거 메서드
      */
-    public void removeParticipant(UserEntity user) {
+    public void removeParticipant(ChatUser user) {
         participants.remove(user);
     }
 
     /**
      * 참가자 추가 메서드
      */
-    public void addParticipant(UserEntity user) {
+    public void addParticipant(ChatUser user) {
         participants.add(user);
     }
 
@@ -102,5 +100,9 @@ public class ChatRoomEntity {
     public void updateLastMessage(String message) {
         this.lastMessage = message;
         this.lastActive = LocalDateTime.now();
+    }
+
+    public void setParticipants(List<ChatUser> participants) {
+        this.participants = participants;
     }
 }
