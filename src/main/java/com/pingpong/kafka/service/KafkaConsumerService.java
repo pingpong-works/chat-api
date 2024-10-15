@@ -60,8 +60,6 @@ public class KafkaConsumerService {
         }
     }
 
-
-
     @KafkaListener(topics = "one-to-many-chat", groupId = "chat-group")
     public void consumeMany(ConsumerRecord<String, String> consumerRecord, Consumer<?, ?> consumer) {
         try {

@@ -60,6 +60,9 @@ dependencies {
 
 	// Postgresql
 	runtimeOnly 'org.postgresql:postgresql'
+
+	// OpenFeign
+	implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
 }
 
 dependencyManagement {
