@@ -7,8 +7,8 @@ import com.pingpong.chat.room.repository.ChatRoomRepository;
 import com.pingpong.chat.message.repository.ChatMessageRepository;
 import com.pingpong.user.entity.ChatUser;
 import com.pingpong.user.repository.ChatUserRepository;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -20,15 +20,22 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 @Slf4j
-@RequiredArgsConstructor
 @Service
 public class ChatRoomService {
 
-    private final KafkaTemplate<String, ChatRoomDto> kafkaTemplate;
+    private final KafkaTemplate<String, Object> kafkaTemplate;
     private final ChatUserRepository userRepository;
     private final ChatRoomRepository chatRoomRepository;
     private final Map<String, ChatRoomDto> chatRoomMap = new ConcurrentHashMap<>();
     private final ChatMessageRepository chatMessageRepository;
+
+    @Autowired
+    public ChatRoomService(KafkaTemplate<String, Object> kafkaTemplate, ChatUserRepository userRepository, ChatRoomRepository chatRoomRepository, ChatMessageRepository chatMessageRepository) {
+        this.kafkaTemplate = kafkaTemplate;
+        this.userRepository = userRepository;
+        this.chatRoomRepository = chatRoomRepository;
+        this.chatMessageRepository = chatMessageRepository;
+    }
 
     /**
      * 채팅방 생성
