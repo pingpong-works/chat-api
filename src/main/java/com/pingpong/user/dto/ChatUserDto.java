@@ -10,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChatUserDto {
+    private Long id;
     private String userId;
     private String name;
     private String profile;
