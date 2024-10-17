@@ -1,6 +1,8 @@
 package com.pingpong.chat.message.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.pingpong.config.LocalDateTimeDeserializer;
 import com.pingpong.user.dto.ChatUserDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +11,6 @@ import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -26,7 +27,7 @@ public class ChatMessageDto {
     private String announcement;
     private String fileUrl;
 
-    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
+    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     private LocalDateTime timestamp;
     private String topic;
     private String profile;
