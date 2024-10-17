@@ -57,6 +57,7 @@ public class ChatRoomController {
     /**
      * history 조회
      */
+    @CrossOrigin(origins = "*")
     @GetMapping("/history")
     public List<ChatMessageDto> getChatHistory(@RequestParam String chatRoomId) {
         log.info("ChatRoomId: {}", chatRoomId);
@@ -67,6 +68,7 @@ public class ChatRoomController {
      * 채팅방 목록 조회
      */
     @PostMapping("/list")
+    @CrossOrigin(origins = "*")
     public ResponseEntity<List<ChatRoom>> getUserChatRooms(@RequestBody ChatUserDto userDto) {
         String userId = userDto.getUserId();
         List<ChatRoom> userChatRooms = chatRoomService.getChatRoomsForUser(userId);
